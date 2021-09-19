@@ -19,7 +19,7 @@ class Form extends React.Component{
         return(
             <div className='form-container'>
                 <form className="inputForm">
-                    <input type="text" onChange={this.handleChange}/>
+                    <input type="text" value={this.state.inputValue} onChange={this.handleChange}/>
                     <button onClick={this.handleSubmit}>Add Card</button>
                 </form>
             </div>
