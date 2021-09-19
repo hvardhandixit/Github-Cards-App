@@ -1,25 +1,31 @@
-import logo from './logo.svg';
+// import logo from './logo.svg';
+import React from 'react';
 import './App.css';
+import Form from './UIComponents/Form';
+import CardList from './UIComponents/CardList';
+import axios from 'axios';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component {
+  constructor(){
+    super();
+    this.state = {profiles: []};
+    // this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  addNewProfile = (profileData) => {
+  	this.setState(prevState => ({
+    	profiles: [...prevState.profiles, profileData],
+    }));
+  };
+
+  render(){
+    return (
+      <div className="container">
+        <Form onSubmit={this.addNewProfile} />
+        <CardList carditems={this.state.profiles}/>
+      </div>
+    );
+  }
 }
 
 export default App;
